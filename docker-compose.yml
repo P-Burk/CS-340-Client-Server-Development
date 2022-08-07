@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+   mongo:
+      container_name: mongodbTest
+      image: mongo:4.2.6
+      ports:
+       - "37450:27017"
+      volumes:
+       - ./db/:/data/db
+      command: [--auth]
+      restart: always
+      networks:
+        - testNet
+
+networks:
+  testNet:
+    driver: bridge
