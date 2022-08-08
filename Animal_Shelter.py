@@ -8,11 +8,11 @@ class AnimalShelter():
     """ CRUD operations for Animal collection in MongoDB """
 
     def __init__(self, userName:str = None, passWord:str = None):
-        # Initializing the MongoClient. This helps to 
-        # access the MongoDB databases and collections. 
+        # Initializing the MongoClient. This helps to
+        # access the MongoDB databases and collections.
         self.userName = userName
         self.passWord = passWord
-        
+
         if userName is not None and passWord is not None:
             self.client = MongoClient('mongodb://%s:%s@localhost:37450/?authMechanism=DEFAULT&authSource=AAC' % (self.userName, self.passWord))
         else:
@@ -85,7 +85,19 @@ class AnimalShelter():
             return outputData
         else:
             return dumps(outputData[0])
-             
+
+    def readAll(self, searchData):
+        """Reads documents from the database and outputs specific cursor needed for Pandas DataFrames
+
+        Args:
+            searchData (dict): Search parameters/criteria
+
+        Returns:
+            outputData (Cursor): results from the search
+        """
+        outputData = self.database.animals.find(searchData, {'_id': False})
+        return outputData
+
     # find a document and update it
     def update(self, searchData: dict, updateData: dict):
         """Updates documents in the database. Can update a single docuement or all docuements that
