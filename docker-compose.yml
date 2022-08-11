@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
    mongo:
-      container_name: mongodbTest
+      container_name: mongoDB_instance
       image: mongo:4.2.6
       ports:
        - "37450:27017"
