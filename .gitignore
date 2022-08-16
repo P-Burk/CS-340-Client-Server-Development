@@ -153,3 +153,4 @@ cython_debug/
 
 db/*
 !db/aac_shelter_outcomes.csv
+demo material/Demo Video.mp4
