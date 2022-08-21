@@ -168,4 +168,21 @@ Finally, if you run the delete() command and only one document in the database m
 - FIXME
 	- ~~Roll realAll() and readOne() into a single read() command where a second argument determines whether a list of entries or a single entry is returned.~~
 
+## Steps to Complete the Project + Challenges
+In order to complete this project, I broke it down into different sections, completed each section individually, then combined all sections into the final dashboard. The first section was the header with the logo, title, and author note. This section was challenging for me because I couldn’t figure out how to get the layout right. My header was rendering the different sections on top of each other like: </br>
+
+Logo </br>
+Title </br>
+Author </br>
+
+My goal was for it to render side by side. For this, I used some of the style features of Dash to implement some formatting via Flexbox. The [CSS-Tricks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) site was especially helpful for this section and other sections where display formatting was utilized.
+
+The next section I tackled was the radio buttons. These weren’t particularly difficult because Dash has functions to generate these natively. The hard part was tying filtering to the radio buttons. For this, I used a Dash callback function and a helper function. The callback function first takes the filter option from the radio button module, then it calls the helper function, using the filter option as an argument. Finally, it feeds the helper function’s output data frame to the table for display. The helper function is fairly straight forward. It executes one of the preset queries on the database based on the filter option it is fed, passes it to another helper function for formatting, then returns the final data frame. I found it easier to generate a new data frame with the query results and use that for table/graph generation versus filtering the initial data frame populated with all of the documents from the database.
+
+The next/concurrent section was the data table. The only real challenges to this section were choosing the different attribute options and formatting. The data used in the table comes pre-formatted thanks to a helper function used in generating the data frame. The formatting of the actual table itself was taken care of via style_data options that lock the column width and handle text overflow. 
+
+After the table, I wanted to implement row selection because I knew this would integrate with a later section (map + markers). For this I modified code that was to used to highlight columns, which I wasn’t going to use. It was as simple as changing all of the “column” keywords to “row_index” and changing the input value fed to the callback function.
+I tackled the map section next. For this section, I used Dash_Leaflet’s built in Map() function. I fed this the data from the table completed in a previous section. One issue I faced when completing this section what that I was getting IndexErrors when the no dog had been selected in the table. To remedy this, I used a try/except clause to return a map with no markers if an IndexError occurs. The rest of the callback function is pretty straightforward. It uses the selectedRow attribute from the table to get a row. Then it uses the values in the 5th and 6th index locations to plot the longitude and latitude for the marker. 
+
+The final section I tackled was the pie chart. The callback function for this section takes in all of the data from the chart. It uses this data to create a new data frame. This data frame gets edited so that it consists of all the different breeds and the count for each. All dog breeds with 50 or less entries in the database get lumped into the “other breeds” category. The only issue I had with this section was getting the counts of each breed and translating that into something that could be used by the plotly express library. Once I learned that the pie function of the library had options for names and values, I didn’t have any more issues. I used breeds for the names and counts/totals for the values in order to get the pie chart to represent breed totals.
 
