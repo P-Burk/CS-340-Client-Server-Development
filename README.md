@@ -11,3 +11,27 @@ I approached the problem given to us in project two by breaking down the require
 ### • What do computer scientists do, and why does it matter? How would your work on this type of project help a company, like Grazioso Salvare, to do their work better?
 Computer scientists solve problems using computers and software. This matters because some problems are best solved using computers and software. Inventory tracking used to be done with paper ledgers. What if the ledger got lost, destroyed, or stolen? While all of this is possible with using an electronic/software-based inventory system, it’s a lot easier to have backups and copies made. Computer scientists helped design, build, and deploy the electronic inventory systems used today. Our work on this type of project helps companies like Grazioso Salvare by making their jobs easier, which in turn helps them field a better product to their customers. 
 
+## About the Project
+This project was commissioned by the Grazioso Salvare company to help them identify shelter dogs in the Austin, TX area for search-and-rescue training. They want the software to be free and open source so that similar organizations in other areas can make use of its features as well.
+
+## Motivation
+The motivation behind the project is that we want to make it easier for companies like Grazioso Salvare to help the dogs and people around them. It helps the dogs in the shelter system by making it easier to find ones that would qualify for search-and-rescue training programs or any other kind of service dog training programs. Finally, with being able to identify dogs for service training programs easier, more dogs will get trained. This leads to service dogs being available when the need arises such as during natural disasters.
+
+## Dashboard
+The dashboard can be accessed by running the `ProjectTwoDashboard.ipynb` file. This will present the user with a link to the actual dashboard. 
+![gif1](https://user-images.githubusercontent.com/68164093/185774027-4649118c-5777-4adb-b5e3-64b0ba2835f8.gif)
+
+When on the dashboard, you will see a table of the dogs that meet the different filtering options (based on training type). These filters are selectable in the space above the table.
+![gif3](https://user-images.githubusercontent.com/68164093/185774073-d76e25f3-7ff6-486b-9e46-ebbf8e628e92.gif)
+![gif4](https://user-images.githubusercontent.com/68164093/185774087-81907dd4-b0e1-4940-a6ed-7dcae2dcb360.gif)
+
+The pie chart details the number of each breed is based off of the current filtered results.
+![gif5](https://user-images.githubusercontent.com/68164093/185774114-d839eccb-e485-4a52-aece-9314d859c13c.gif)
+
+If a user selects the row of a dog, the map will update with a marker where said dog is located. The map maker also contains a text box showing the dog’s ID number and their name.
+![gif2](https://user-images.githubusercontent.com/68164093/185774138-018104b1-6c3e-4349-849b-90ca30e6615b.gif)
+
+
+
+
+
