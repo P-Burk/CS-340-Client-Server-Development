@@ -51,6 +51,79 @@ and </br>
 `show collections` </br>
 ![image](https://user-images.githubusercontent.com/68164093/185774513-5c2962a3-2783-4dcb-a3eb-361a136759d8.png)
 
+### -	USER ACCOUNT SETUP
+- ADMIN ACCOUNT
+  -	Start the Mongo instance using the mongo command.
+  -	Navigate to the admin database using the use admin command.
+  -	From here use the following command to add a user with administrative privileges: </br>
+  `db.createUser({ 
+      user: “admin”, 
+      pwd: “password”, 
+      roles: [{ role: “userAdminAnyDatabase”, db: “admin”}, “readWriteAnyDatabase” ]
+  })` </br>
+  You can see the example below where the username is “PEBurkhardt” and the password is “adminPass”.
+  ![image](https://user-images.githubusercontent.com/68164093/185775408-d29ae412-8cea-4bcc-83e6-7bef13f3324e.png)
+- READ/WRITE USER ACCOUNT
+  - For a regular user account, you follow the same steps as above, except the roles will be different. In this case, we made a user account for someone using the AAC database we created previously. For this one, use the command: </br>
+  `db.createUser({ 
+      user: “aacuser”, 
+      pwd: “password”, 
+      roles: [{ role: “readWrite”, db: “AAC”}]
+  })` </br>
+  ![image](https://user-images.githubusercontent.com/68164093/185775474-e8db37ab-930b-42c8-ab3d-a3f26eab3789.png)
+  
+### -	LOGGING INTO THE DATABASE
+  - In order to log into the database as a user, first exit the database using the `exit` command.
+  - From here, restart the database using the following commands: </br>
+  `/usr/local/bin/mongod_ctl stop` </br>
+  `/usr/local/bin/mongod_ctl start` </br>
+  - You can then log into the database using the following command: </br>
+  `mongo --authenticationDatabase "DBNAME" -u "USERNAME" -p` </br>
+  Replace `DBNAME` with the database used when creating the user account and replace `USERNAME` with the username. You can see in the below image the commands used to log into the admin account and user account that we created in previous steps. </br>
+  ![image](https://user-images.githubusercontent.com/68164093/185775538-7017608b-88e1-4d85-896c-7a1bdf1c23cc.png) </br>
+  One thing to note is that the admin can see all of the databases when you use the `show dbs` command while the aacuser account can only see the database that they have privileges for.
+  - For any issues creating a user account, see the [MongoDB documentation for creating users](https://www.mongodb.com/docs/v4.2/tutorial/create-users/).
+
+### -	PYTHON MODULE SETUP
+  - Pull the `Animal_Shelter.py` and `Animal_Shelter_tests.ipynb` files from the GitHub repository or your cloned version of the repository.
+  - Navigate to these files in a program like Jupyter Notebook and open them. </br>
+  ![image](https://user-images.githubusercontent.com/68164093/185775659-74567843-cf56-433e-a068-7ee84227e671.png)
+  - Once they are open, you can make changes to the .py file and test the changes/functions in the .ipynb file.
+  - NOTE: you don’t NEED to use Jupyter Notebook, but it makes editing and testing the project files easier.
+
+## SETUP: Installation
+The tools needed for this project are as follows:
+  - MongoDB (v4.2.6) – Chosen for its ease of use and ease of scalability.  
+    - [MongoDB installation.](https://www.mongodb.com/docs/v4.2/installation/)
+  - Python (v3.6.9) – Chosen because of its ease of use for beginners and the fact that it is free and open source.
+    - [Python installation.](https://wiki.python.org/moin/BeginnersGuide/Download)
+  -	PyMongo (v3.10.1) – Chosen because it is the official MongoDB driver for Python applications interfacing with MongoDB databases. Easy to use and built specifically for Python + MongoDB.
+	  -	Open the command prompt or terminal once Python has been installed
+    -	Run the command: </br>
+      `pip install pymongo==3.10.1` </br>
+  -	Dash (v1.10.0) – Chosen for it being open source, modularity, and ability to easily create interactive data apps. Dash allows a user to set up a web application without needing to know HTML5 and CSS. It has functions of both built in, making it easy to learn and quick to deploy a working web application.
+    -	Open the command prompt or terminal once Python has been installed
+    -	Run the command: </br>
+      `pip install dash==1.10.0` </br>
+    - [Dash installation.](https://dash.plotly.com/installation)
+  -	A requirements.txt file will be included that contains all Python dependencies. These can be installed using the command: `pip install -r requirements.txt`
+
+## USAGE
+The main part of this project acts as a CRUD (create, read, update, delete) application that interfaces with the MongoDB database.
+- CREATE
+  - This portion of the module is used to add entries to the database. It takes a dictionary containing the data to be added as an argument.
+- READ
+  - This portion of the module is used to read entries from the database. You can either read a whole list of entries matching the search query or read the first entry in the list of matching results. You select the output based on the second argument of the read() command. True for outputting all matches, False for outputting only the first match.
+- UPDATE
+  - This portion of the module is used for updating documents within the database. It takes two arguments, both being dictionaries. The first one is the parameters you wish to search for and the second one is the parameters which you wish to update. The function has handling for “None” arguments and if the search comes back empty. Also, it will ask the user if they wish to delete multiple or single documents if more than one meet the search criteria.
+- DELETE
+  -	This portion of the module is used for deleting documents out of the database. It is modeled and performs almost exactly the same as the update function except it only takes one argument. That argument is the search parameters for the documents(s) you wish to delete.
+
+
+
+
+
+
 
 
 
