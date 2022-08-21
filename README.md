@@ -31,6 +31,25 @@ The pie chart details the number of each breed is based off of the current filte
 If a user selects the row of a dog, the map will update with a marker where said dog is located. The map maker also contains a text box showing the dog’s ID number and their name.
 ![gif2](https://user-images.githubusercontent.com/68164093/185774138-018104b1-6c3e-4349-849b-90ca30e6615b.gif)
 
+## SETUP: Getting Started
+In order to get started with this project, you will first need to follow the instructions in the installation section to get MongoDB and Python installed. Please see the below steps to recreate the database and Python module.
+### -	DATABASE SETUP
+- To set up the database, you will need the appropriate csv file with the animal information. For this, you can use the Austin Animal Center (AAC) Outcomes data set (aac_shelter_outcomes.csv).
+- In order to create the database, you need to open the terminal and navigate to the directory where the csv file is located. 
+Example code:`cd /usr/local/datasets/`
+- Next, you import the csv and create the database via the following command: </br>
+`mongoimport --port PORTNUMBER --db DBNAME --collection COLLECTIONNAME --type=csv --headerline --file=./aac_shelter_outcome.csv` </br>
+Replace `PORTNUMBER`, `DBNAME`, and `COLLECTIONNAME` with your port number and desired names. You should get a log stating the connection to the MongoDB instance and how many documents were imported successfully and/or failed to import.
+![image](https://user-images.githubusercontent.com/68164093/185774325-57cbfac7-d4a6-4fd6-82e8-eebbeb98cd73.png)
+- From here you can start your MongoDB instance and get into the command line using the commands: </br>
+`/usr/local/bin/mongod_ctl start-noauth` </br>
+and </br>
+`mongo` </br>
+- Ensure that the database was created/imported correctly by using the commands below (for the example, the database name was AAC and the collection name was animals): </br>
+`show dbs` </br>
+`use AAC` </br>
+`show collections` </br>
+![image](https://user-images.githubusercontent.com/68164093/185774513-5c2962a3-2783-4dcb-a3eb-361a136759d8.png)
 
 
 
