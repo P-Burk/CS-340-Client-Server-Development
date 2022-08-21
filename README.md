@@ -119,11 +119,53 @@ The main part of this project acts as a CRUD (create, read, update, delete) appl
 - DELETE
   -	This portion of the module is used for deleting documents out of the database. It is modeled and performs almost exactly the same as the update function except it only takes one argument. That argument is the search parameters for the documents(s) you wish to delete.
 
+## TESTS
+NOTE: Ensure that the MongoDB instance is running BEFORE testing. </br>
+To test the Python module, use the Animal_Shelter_tests.ipynb file. </br>
+- Initialize the class and test variables: </br>
+NOTE: You can use an account that you set up during the user account setup section OR you can start the MongoDB instance in “noauth” mode and omit the username and password.
+![image](https://user-images.githubusercontent.com/68164093/185776835-6e156410-bdcc-469e-9bb6-58d45eb6ca89.png)
+- Select the cells you containing the tests you wish to run and hit the “>| Run” button. It is advised that they are tested in the order they are in or else unexpected results may occur. An example is running the test to display “data not found” output after you have run the test where the data is created. The previous test will return the created data rather than the expected error output.
+- EXAMPLE: running the create() test with the test variable initialized in a previous step.
+![image](https://user-images.githubusercontent.com/68164093/185776859-c2c1e634-6ce1-48e3-ba2f-7ab7264e89d1.png) </br>
+MongoDB query showing the database entry: </br>
+![image](https://user-images.githubusercontent.com/68164093/185776876-7de433a6-403e-4040-b07d-d826cfd08515.png)
+- EXAMPLE: reading the first entry from that database that meets the search criteria:
+![image](https://user-images.githubusercontent.com/68164093/185776893-1199e5a4-6163-4313-94c2-07ca735d7a50.png)
+- EXAMPLE: reading multiple entries from the database (note the multiple IDs and scroll bar, indicating there are multiple entries that meet the criteria of the search): </br>
+![image](https://user-images.githubusercontent.com/68164093/185776902-75405e23-da24-4fa1-b7a4-c5d9e2c90f34.png)
+- EXAMPLE: running the update function when multiple entries meet the search criteria prompts the user with a question on whether or not they want to update all entries or just one. Selecting just one will further prompt for the Animal ID of the one the user wishes to update or to type “exit” to exit out of the function:
+![image](https://user-images.githubusercontent.com/68164093/185776910-07320a86-e07a-4026-9bdb-f402fd1d40b3.png) </br>
+"n" was entered into the box: </br>
+![image](https://user-images.githubusercontent.com/68164093/185776921-af6bd8ef-2948-448d-a73c-d0489bd95b25.png) </br>
+Upon entering a valid ID, that animal’s record will be displayed with the updated information along with a conformation message about the total number of animals
+updated: </br>
+![image](https://user-images.githubusercontent.com/68164093/185776928-00ba84f3-4d76-4eca-be8b-65f3f0386002.png)
+- EXAMPLE: running the same command but entering “y” for the prompt asking if the user wishes to update all entries will update all the entries and display the updated entries along with the count of how many animals were updated:
+![image](https://user-images.githubusercontent.com/68164093/185776937-6a5444a9-9a3b-46f6-865e-3087af95bedc.png) </br>
+NOTE: run the command under that one and enter “y” for the prompt to change all of the updates from the previous two commands back to their original values. This is accomplished using the same update() command, but swapping the arguments. </br>
+![image](https://user-images.githubusercontent.com/68164093/185776948-076e1021-1acd-41b9-b5e7-6cdb1595f201.png)</br>
+- EXAMPLE: The delete() command works exactly the same way as the update() command. For this one we will add multiple documents to use for a demonstration.:</br>
+![image](https://user-images.githubusercontent.com/68164093/185776978-06f485d1-270e-46bb-b273-883734f2c8b2.png)</br>
+![image](https://user-images.githubusercontent.com/68164093/185776983-a275d528-89d8-4e14-98fc-2ecaaee811fb.png) </br>
+We can first try deleting a single cat from the ones we added: </br>
+![image](https://user-images.githubusercontent.com/68164093/185777000-bc833040-b0c2-4c7d-b541-ced3bcbd9680.png) </br>
+After entering the ID: </br>
+![image](https://user-images.githubusercontent.com/68164093/185777019-734ee226-ac8a-406a-997f-2363fc7287ec.png) </br>
+We can confirm the delete by running our read() command, which should only return two documents: </br>
+![image](https://user-images.githubusercontent.com/68164093/185777033-519eb380-763b-4e56-be8f-698722e8a8a9.png) </br>
+Running the delete command again, but selection “y” will result in the other two documents being deleted: </br>
+![image](https://user-images.githubusercontent.com/68164093/185777048-e759fb8f-ffba-4d16-a6a7-3ea849a735f1.png) </br>
+Running the search again should result in "no items matching": </br>
+![image](https://user-images.githubusercontent.com/68164093/185777052-8d305542-633f-4d8a-861c-bc816b392c38.png) </br>
+Finally, if you run the delete() command and only one document in the database matches the search criteria, it will be automatically deleted: </br>
+![image](https://user-images.githubusercontent.com/68164093/185777062-0325c3dc-706b-4dfa-a665-0f9d9e2c1dbf.png) </br>
 
-
-
-
-
-
+## Roadmap/Features
+- TODO
+	- ~~Implement update() functionality.~~
+	- ~~Implement delete() functionality.~~
+- FIXME
+	- ~~Roll realAll() and readOne() into a single read() command where a second argument determines whether a list of entries or a single entry is returned.~~
 
 
